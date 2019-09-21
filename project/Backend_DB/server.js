@@ -158,6 +158,21 @@ dataRoutesContact.route('/find/:userID').get(function(req, res) {
     });
 });
 
+//Read certain data based on requested userID & firstName & lastName
+
+dataRoutesContact.route('/search/:userID/:firstName/:lastName').get(function(req,res) {
+    let userID = req.params.userID;
+    let firstName = req.params.firstName;
+    let lastName = req.params.lastName;
+
+    Contact.find({ userID: userID, firstName: firstName, lastName: lastName }, function(err,contacts) {
+        if (!contacts)
+            res.status(404).send("data is not found");
+        else 
+            res.json(contacts);
+    });
+});
+
 // Update the existing data
 dataRoutesContact.route('/update/:id').post(function(req, res) {
     Contact.findById(req.params.id, function(err, contacts) {
