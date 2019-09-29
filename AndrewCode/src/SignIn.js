@@ -20,9 +20,12 @@ class SignIn extends React.Component{
 
 	onSubmitSignin = () => {
 		console.log(this.state);
-		let userID = this.state.signInUsername;
-		let userPW = this.state.signInPassword;
-		axios.post('http://localhostt:4000/users/login/:userID/:userPW')
+		const user {
+			userID: this.state.signInUsername,
+			userPW: this.state.signInPassword
+		}
+		axios.post('http://localhostt:4000/users/login/'+user.userID+'/'+user.userPW)
+		.then(res => console.log(res.data));
 	}
 
 	render ()
