@@ -11,7 +11,7 @@ All routes is based on
 http://www.allyourprojectarebelongtous.com:4000
 
 (  ex:  http://www.allyourprojectarebelongtous.com:4000/users/add  )
-(  make sure to get rid of ''s in practice  )
+
 
 //////////////////////////
 //	Users Data	//
@@ -58,17 +58,17 @@ http://www.allyourprojectarebelongtous.com:4000
 /////////////////////////////
 
 
-1. Get every Contacts data JSONs
+1. Get every Users data JSONs
 
 /contacts/
 
 
-2. Get certain Contacts JSONs based on requested object ID(Caution! object ID is different with userID! Do not use this route if you don't know about the object ID!)
+2. Get certain Users JSONs based on requested object ID(Caution! object ID is different with userID! Do not use this route if you don't know about the object ID!)
 
 /contacts/'put object id in here'
 
 
-3. Get certain Contacts JSONs based on requested userID
+3. Get certain Users JSONs based on requested userID
 
 /contacts/find/'put userID in here'
 
@@ -86,9 +86,4 @@ http://www.allyourprojectarebelongtous.com:4000
 6. Delete the existing data based on requested object ID
 
 /contacts/delete/'put object id in here'
-
-
-7. Search Function: Get certain data based on requested userID & firstName & lastName
-
-/contacts/search/'put userID here'/'put firstName here'/'put lastName here'
 

@@ -114,10 +114,14 @@ dataRoutes.route('/login/:userID/:userPW').get(function(req,res) {
     let userPW = req.params.userPW;
 
     User.find({ userID: userID, userPW: userPW }, function(err, users) {
-        if (!users)
-            res.status(404).send("There's no matching account!");
+        
+        // If there's no matching data, send fail message
+        if (users.length === 0)
+            res.send("fail");
+
+        // Right data
         else
-            res.json(users);
+            res.send("success");
     });
 });
 
