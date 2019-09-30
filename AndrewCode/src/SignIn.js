@@ -36,6 +36,9 @@ class SignIn extends React.Component{
 				console.log("Login");
 				const {onSignIn} = this.props;
 				onSignIn(user.userID);
+				const {onRouteChange} = this.props;
+				onRouteChange('signin');
+				
 				
 			
 			});

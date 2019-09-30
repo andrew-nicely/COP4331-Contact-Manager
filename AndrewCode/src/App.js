@@ -5,14 +5,14 @@ import SignIn from './SignIn';
 import Test from './Test';
 import CardList from './CardList';
 import SearchBar from './SearchBar';
-import { contacts } from './Contact';
+import axios from 'axios';
 
 class App extends Component {
 	constructor() {
 		super()
 		this.state = {
 			route: 'signin',
-			contacts: contacts,
+			contacts: [],
 			searchField: '',
 		}
 	}
@@ -22,7 +22,6 @@ class App extends Component {
 		if (route === 'signin')
 		{
 			this.setState({route: 'testsignout'});
-			console.log(contacts);
 		}
 		else if (route === 'testsignout')
 		{
@@ -35,26 +34,30 @@ class App extends Component {
 	}
 
 	onLogIn = (userID) => {
-		axios.get('http://localhost:4000/contact/find/'+user.userID)
+		console.log(userID);
+
+		axios.get('http://localhost:4000/contacts/find/'+userID)
 		.then(res => {
 			const {data} = res;
 			console.log(data);
+			this.setState({contacts:data})
 		})
 	}
 
   	render(){
   		const filteredContacts = this.state.contacts.filter(contacts => {
-			return contacts.name.toLowerCase().includes(this.state.searchField.toLowerCase());
+			  console.log("Filtered", contacts);
+			return contacts.firstName.toLowerCase().includes(this.state.searchField.toLowerCase());
 		});
 	    return (
 	      <div className="App">
 	        <NavBar />
 	        {
-	        	this.state.route === 'signin' ? <SignIn onSignIn = {this.onSignIn} onRouteChange = {this.onRouteChange}/> :
+	        	this.state.route === 'signin' ? <SignIn onSignIn={this.onLogIn} onRouteChange={this.onRouteChange}/> :
 	        	<div>
-		        	<Test onRouteChange = {this.onRouteChange}/>
-		        	<SearchBar searchChange = {this.onSearchChange}/>
-		        	<CardList contacts = {filteredContacts}/>
+		        	<Test onRouteChange={this.onRouteChange}/>
+		        	<SearchBar searchChange={this.onSearchChange}/>
+		        	<CardList contacts={filteredContacts}/>
 	        	</div>
 	    	}
 
