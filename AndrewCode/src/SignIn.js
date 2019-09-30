@@ -34,6 +34,9 @@ class SignIn extends React.Component{
 			
 			else
 				console.log("Login");
+				const {onSignIn} = this.props;
+				onSignIn(user.userID);
+				
 			
 			});
 	}

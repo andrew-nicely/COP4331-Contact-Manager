@@ -34,6 +34,14 @@ class App extends Component {
 		this.setState({ searchField: event.target.value });
 	}
 
+	onLogIn = (userID) => {
+		axios.get('http://localhost:4000/contact/find/'+user.userID)
+		.then(res => {
+			const {data} = res;
+			console.log(data);
+		})
+	}
+
   	render(){
   		const filteredContacts = this.state.contacts.filter(contacts => {
 			return contacts.name.toLowerCase().includes(this.state.searchField.toLowerCase());
@@ -42,7 +50,7 @@ class App extends Component {
 	      <div className="App">
 	        <NavBar />
 	        {
-	        	this.state.route === 'signin' ? <SignIn onRouteChange = {this.onRouteChange}/> :
+	        	this.state.route === 'signin' ? <SignIn onSignIn = {this.onSignIn} onRouteChange = {this.onRouteChange}/> :
 	        	<div>
 		        	<Test onRouteChange = {this.onRouteChange}/>
 		        	<SearchBar searchChange = {this.onSearchChange}/>
