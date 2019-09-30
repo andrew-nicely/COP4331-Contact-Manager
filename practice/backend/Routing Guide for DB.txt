@@ -1,0 +1,89 @@
+//
+//	Routing Guide for DB.txt
+//
+//	Author: Junejae Kim
+//
+
+
+Here's every routes for CRUD operation for our database.
+
+All routes is based on 
+http://www.allyourprojectarebelongtous.com:4000
+
+(  ex:  http://www.allyourprojectarebelongtous.com:4000/users/add  )
+
+
+//////////////////////////
+//	Users Data	//
+//////////////////////////
+
+
+1. Get every Users data JSONs
+
+/users/
+
+
+2. Get certain Users JSONs based on requested object ID(Caution! object ID is different with userID! Do not use this route if you don't know about the object ID!)
+
+/users/'put object id in here'
+
+
+3. Get certain Users JSONs based on requested userID
+
+/users/find/'put userID in here'
+
+
+4. Update the existing data based on requested object ID(Make sure you send completed JSON Query when using this route)
+
+/users/update/'put object id in here'
+
+
+5. Create a new data(Make sure you send completed JSON Query when using this route)
+
+/users/add
+
+
+6. Delete the existing data based on requested object ID
+
+/users/delete/'put object id in here'
+
+
+7. Login Function: Search valid login account(If invalid query is received, it gives nothing or error message)
+
+/users/login/'put userID in here'/'put userPW in here'
+
+
+/////////////////////////////
+//	Contacts Data	   //
+/////////////////////////////
+
+
+1. Get every Users data JSONs
+
+/contacts/
+
+
+2. Get certain Users JSONs based on requested object ID(Caution! object ID is different with userID! Do not use this route if you don't know about the object ID!)
+
+/contacts/'put object id in here'
+
+
+3. Get certain Users JSONs based on requested userID
+
+/contacts/find/'put userID in here'
+
+
+4. Update/Edit the existing data based on requested object ID(Make sure you send completed JSON Query when using this route)
+
+/contacts/update/'put object id in here'
+
+
+5. Create a new data(Make sure you send completed JSON Query when using this route)
+
+/contacts/add
+
+
+6. Delete the existing data based on requested object ID
+
+/contacts/delete/'put object id in here'
+
