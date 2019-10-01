@@ -6,7 +6,7 @@ class SignIn extends React.Component{
 		super(props);
 		this.state = {
 			signInUsername: '',
-			signInPassword: '',
+			signInPassword: ''
 		}
 	}
 
@@ -20,11 +20,15 @@ class SignIn extends React.Component{
 
 	onSubmitSignin = () => {
 		console.log(this.state);
+
 		const user = {
 			userID: this.state.signInUsername,
 			userPW: this.state.signInPassword
 		}
-		axios.get('http://localhost:4000/users/login/'+user.userID+'/'+user.userPW)
+
+		// Junejae modified this code for implementing POST function
+		axios.post('http://localhost:4000/users/login', { userID: user.userID, userPW: user.userPW})
+		
 		.then(res => {
 			// 
 			const {data} = res;
@@ -33,14 +37,13 @@ class SignIn extends React.Component{
 				console.log("Error");
 			
 			else
+				{
 				console.log("Login");
 				const {onSignIn} = this.props;
 				onSignIn(user.userID);
 				const {onRouteChange} = this.props;
 				onRouteChange('signin');
-				
-				
-			
+				}
 			});
 	}
 
