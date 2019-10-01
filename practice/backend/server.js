@@ -125,6 +125,18 @@ dataRoutes.route('/login/:userID/:userPW').get(function(req,res) {
     });
 });
 
+dataRoutes.route('/login').post(function(req, res){
+    
+    User.find({ userID: req.body.userID, userPW: req.body.userPW }, function(err, users){
+        if (users.length === 0)
+            res.send("fail");
+
+        // Right data
+        else
+            res.send("success");
+    });
+});
+
 /////////////////////////////////////////////
 // CRUD Operation for Collection: contacts //
 /////////////////////////////////////////////
