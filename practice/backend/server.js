@@ -32,6 +32,8 @@ connection.once('open', function() {
 // CRUD Operation for Collection: users //
 //////////////////////////////////////////
 
+/* For debugging
+
 // Read every data in the database
 dataRoutes.route('/').get(function(req, res) {
     User.find(function(err, users) {
@@ -65,6 +67,8 @@ dataRoutes.route('/find/:userID').get(function(req, res) {
     });
 });
 
+*/
+
 // Update the existing data
 dataRoutes.route('/update/:id').post(function(req, res) {
     User.findById(req.params.id, function(err, users) {
@@ -87,7 +91,7 @@ dataRoutes.route('/update/:id').post(function(req, res) {
 });
 
 // Create a new data
-dataRoutes.route('/add').post(function(req, res) {
+dataRoutes.route('/register').post(function(req, res) {
     let users = new User(req.body);
     users.save()
         .then(users => {
@@ -99,8 +103,8 @@ dataRoutes.route('/add').post(function(req, res) {
 });
 
 // Delete the existing data
-dataRoutes.route('/delete/:id').delete(function(req, res) {
-    User.findByIdAndRemove(req.params.id, function(err, users) {
+dataRoutes.route('/delete').delete(function(req, res) {
+    User.findByIdAndRemove(req.body._id, function(err, users) {
         if (!users)
             res.status(404).send("Data is not found"); 
         else
@@ -109,25 +113,10 @@ dataRoutes.route('/delete/:id').delete(function(req, res) {
 });
 
 // Search valid login account
-dataRoutes.route('/login/:userID/:userPW').get(function(req,res) {
-    let userID = req.params.userID;
-    let userPW = req.params.userPW;
-
-    User.find({ userID: userID, userPW: userPW }, function(err, users) {
-        
-        // If there's no matching data, send fail message
-        if (users.length === 0)
-            res.send("fail");
-
-        // Right data
-        else
-            res.send("success");
-    });
-});
-
 dataRoutes.route('/login').post(function(req, res){
     
     User.find({ userID: req.body.userID, userPW: req.body.userPW }, function(err, users){
+        // If there's no matching data, send fail message
         if (users.length === 0)
             res.send("fail");
 
@@ -141,6 +130,9 @@ dataRoutes.route('/login').post(function(req, res){
 // CRUD Operation for Collection: contacts //
 /////////////////////////////////////////////
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
 // Read every data in the database
 dataRoutesContact.route('/').get(function(req, res) {
     Contact.find(function(err, contacts) {
@@ -163,9 +155,9 @@ dataRoutesContact.route('/:id').get(function(req, res) {
     });
 });
 
-// Read certain data based on requested userID
+// Read certain data based on requested userID - get function
 dataRoutesContact.route('/find/:userID').get(function(req, res) {
-    let userID = req.params.userID;
+    let userID = req.body.userID;
     Contact.find({ userID: userID }, function(err, contacts) {
         if (!contacts)
             res.status(404).send("data is not found");
@@ -173,18 +165,18 @@ dataRoutesContact.route('/find/:userID').get(function(req, res) {
             res.json(contacts);
     });
 });
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
 
-//Read certain data based on requested userID & firstName & lastName
+// Read certain data based on requested userID
+dataRoutesContact.route('/find').post(function(req, res) {
+    let userID = req.body.userID;
 
-dataRoutesContact.route('/search/:userID/:firstName/:lastName').get(function(req,res) {
-    let userID = req.params.userID;
-    let firstName = req.params.firstName;
-    let lastName = req.params.lastName;
-
-    Contact.find({ userID: userID, firstName: firstName, lastName: lastName }, function(err,contacts) {
+    Contact.find({ userID: userID }, function(err, contacts) {
         if (!contacts)
             res.status(404).send("data is not found");
-        else 
+        else
             res.json(contacts);
     });
 });
@@ -202,7 +194,7 @@ dataRoutesContact.route('/update/:id').post(function(req, res) {
             contacts.phoneNum = req.body.phoneNum;
 
             contacts.save().then(contacts => {
-                res.json('User updated!');
+                res.json('A contact is updated!');
             })
             .catch(err => {
                 res.status(400).send("Update is not possible");
@@ -215,10 +207,10 @@ dataRoutesContact.route('/add').post(function(req, res) {
     let contacts = new Contact(req.body);
     contacts.save()
         .then(contacts => {
-            res.status(200).json({'contacts': 'contacts added successfully'});
+            res.status(200).send('A contact is added successfully');
         })
         .catch(err => {
-            res.status(400).send("Adding new contacts failed");
+            res.status(400).send("Adding a new contact failed");
         });
 });
 
