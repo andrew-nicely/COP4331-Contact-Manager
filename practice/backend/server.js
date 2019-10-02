@@ -32,6 +32,7 @@ connection.once('open', function() {
 // CRUD Operation for Collection: users //
 //////////////////////////////////////////
 
+
 /* For debugging
 
 // Read every data in the database
@@ -44,6 +45,7 @@ dataRoutes.route('/').get(function(req, res) {
         }
     });
 });
+
 
 // Read certain data based on requested object id
 dataRoutes.route('/:id').get(function(req, res) {
@@ -70,8 +72,8 @@ dataRoutes.route('/find/:userID').get(function(req, res) {
 */
 
 // Update the existing data
-dataRoutes.route('/update/:id').post(function(req, res) {
-    User.findById(req.params.id, function(err, users) {
+dataRoutes.route('/update').post(function(req, res) {
+    User.findById(req.body._id, function(err, users) {
         if (!users)
             res.status(404).send("data is not found");
         else
@@ -82,10 +84,10 @@ dataRoutes.route('/update/:id').post(function(req, res) {
             users.emailAddress = req.body.emailAddress;
 
             users.save().then(users => {
-                res.json('User updated!');
+                res.status(200).send('User updated!');
             })
             .catch(err => {
-                res.status(400).send("Update is not possible");
+                res.status(404).send("Update is not possible");
             });
     });
 });
@@ -95,10 +97,10 @@ dataRoutes.route('/register').post(function(req, res) {
     let users = new User(req.body);
     users.save()
         .then(users => {
-            res.status(200).json({'users': 'users added successfully'});
+            res.status(200).json(users);//{'users': 'users added successfully'});
         })
         .catch(err => {
-            res.status(400).send("Adding new users failed");
+            res.status(404).send("Adding new users failed");
         });
 });
 
@@ -130,9 +132,68 @@ dataRoutes.route('/login').post(function(req, res){
 // CRUD Operation for Collection: contacts //
 /////////////////////////////////////////////
 
+
+// Read certain data based on requested userID
+dataRoutesContact.route('/find').post(function(req, res) {
+    let userID = req.body.userID;
+
+    Contact.find({ userID: userID }, function(err, contacts) {
+        if (!contacts)
+            res.status(404).send("data is not found");
+        else
+            res.json(contacts);
+    });
+});
+
+// Update the existing data
+dataRoutesContact.route('/update').post(function(req, res) {
+    Contact.findById(req.body._id, function(err, contacts) {
+        if (!contacts)
+            res.status(404).send("data is not found");
+        else
+            contacts.userID = req.body.userID;
+            contacts.firstName = req.body.firstName;
+            contacts.lastName = req.body.lastName;
+            contacts.emailAddress = req.body.emailAddress;
+            contacts.phoneNum = req.body.phoneNum;
+
+            contacts.save().then(contacts => {
+                res.json('A contact is updated!');
+            })
+            .catch(err => {
+                res.status(400).send("Update is not possible");
+            });
+    });
+});
+
+// Create a new data
+dataRoutesContact.route('/add').post(function(req, res) {
+    let contacts = new Contact(req.body);
+    contacts.save()
+        .then(contacts => {
+            res.status(200).send('A contact is added successfully');
+        })
+        .catch(err => {
+            res.status(400).send("Adding a new contact failed");
+        });
+});
+
+// Delete the existing data
+dataRoutesContact.route('/delete').delete(function(req, res) {
+    Contact.findByIdAndRemove(req.body._id, function(err, contacts) {
+        if (!contacts)
+            res.status(404).send("Data is not found"); 
+        else
+            res.status(200).send("Data is successfully deleted");
+    });
+});
+
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+
 // Read every data in the database
 dataRoutesContact.route('/').get(function(req, res) {
     Contact.find(function(err, contacts) {
@@ -165,64 +226,12 @@ dataRoutesContact.route('/find/:userID').get(function(req, res) {
             res.json(contacts);
     });
 });
+
+*/
+
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
-
-// Read certain data based on requested userID
-dataRoutesContact.route('/find').post(function(req, res) {
-    let userID = req.body.userID;
-
-    Contact.find({ userID: userID }, function(err, contacts) {
-        if (!contacts)
-            res.status(404).send("data is not found");
-        else
-            res.json(contacts);
-    });
-});
-
-// Update the existing data
-dataRoutesContact.route('/update/:id').post(function(req, res) {
-    Contact.findById(req.params.id, function(err, contacts) {
-        if (!contacts)
-            res.status(404).send("data is not found");
-        else
-            contacts.userID = req.body.userID;
-            contacts.firstName = req.body.firstName;
-            contacts.lastName = req.body.lastName;
-            contacts.emailAddress = req.body.emailAddress;
-            contacts.phoneNum = req.body.phoneNum;
-
-            contacts.save().then(contacts => {
-                res.json('A contact is updated!');
-            })
-            .catch(err => {
-                res.status(400).send("Update is not possible");
-            });
-    });
-});
-
-// Create a new data
-dataRoutesContact.route('/add').post(function(req, res) {
-    let contacts = new Contact(req.body);
-    contacts.save()
-        .then(contacts => {
-            res.status(200).send('A contact is added successfully');
-        })
-        .catch(err => {
-            res.status(400).send("Adding a new contact failed");
-        });
-});
-
-// Delete the existing data
-dataRoutesContact.route('/delete/:id').delete(function(req, res) {
-    Contact.findByIdAndRemove(req.params.id, function(err, contacts) {
-        if (!contacts)
-            res.status(404).send("Data is not found"); 
-        else
-            res.status(200).send("Data is successfully deleted");
-    });
-});
 
 
 app.use('/users', dataRoutes);
