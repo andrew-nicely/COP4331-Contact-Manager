@@ -3,21 +3,25 @@
 // COP 4331
 // Project: Contact Manager
 
+
+//const crypto = require('crypto');
+const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const mongoose = require('mongoose');
 const dataRoutes = express.Router();
 const dataRoutesContact = express.Router();
 const PORT = 4000; // Port we'll use
+
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 let User = require('./users.model');
 let Contact = require('./contacts.model');
 
 app.use(cors());
 app.use(bodyParser.json());
-
 
 // Set the database's location
 mongoose.connect('mongodb://127.0.0.1:27017/contactManager', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
@@ -32,7 +36,6 @@ connection.once('open', function() {
 // CRUD Operation for Collection: users //
 //////////////////////////////////////////
 
-
 /* For debugging
 
 // Read every data in the database
@@ -45,7 +48,6 @@ dataRoutes.route('/').get(function(req, res) {
         }
     });
 });
-
 
 // Read certain data based on requested object id
 dataRoutes.route('/:id').get(function(req, res) {
@@ -68,6 +70,15 @@ dataRoutes.route('/find/:userID').get(function(req, res) {
             res.json(users);
     });
 });
+
+// Delete every data with matching id
+dataRoutes.route("/exterminatus").delete(function(req, res) {
+
+    User.deleteMany({ userID: req.body.userID }, function(err, users){
+        if (!err)
+            res.send("end of the world");
+    })
+})
 
 */
 
@@ -94,14 +105,45 @@ dataRoutes.route('/update').post(function(req, res) {
 
 // Create a new data
 dataRoutes.route('/register').post(function(req, res) {
-    let users = new User(req.body);
-    users.save()
-        .then(users => {
-            res.status(200).json(users);//{'users': 'users added successfully'});
-        })
-        .catch(err => {
-            res.status(404).send("Adding new users failed");
-        });
+    
+    bcrypt.hash(req.body.userPW, saltRounds, function(err, hash) {
+
+        if (err) throw err;
+
+        req.body.userPW = hash;
+
+        const users = new User(req.body);
+
+        users.save()
+            .then(users => {
+                res.status(200).json(users);//{'users': 'users added successfully'});
+            })
+            .catch(err => {
+                res.status(404).send("Adding new users failed");
+            });
+    });
+});
+
+// Search valid login account
+dataRoutes.route('/login').post(function(req, res){
+
+    User.findOne({ userID: req.body.userID }, function(err, users){
+
+        if (users !== null)
+
+            bcrypt.compare(req.body.userPW, users.userPW, function(err, isMatching) {
+
+                if (isMatching) res.send("success");
+            
+                else res.send("fail");
+
+            });
+
+        // If there's no matching data, send fail message
+        else
+            res.send("fail");
+            
+    });
 });
 
 // Delete the existing data
@@ -114,19 +156,6 @@ dataRoutes.route('/delete').delete(function(req, res) {
     });
 });
 
-// Search valid login account
-dataRoutes.route('/login').post(function(req, res){
-    
-    User.find({ userID: req.body.userID, userPW: req.body.userPW }, function(err, users){
-        // If there's no matching data, send fail message
-        if (users.length === 0)
-            res.send("fail");
-
-        // Right data
-        else
-            res.send("success");
-    });
-});
 
 /////////////////////////////////////////////
 // CRUD Operation for Collection: contacts //
