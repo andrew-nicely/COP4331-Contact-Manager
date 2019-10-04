@@ -18,72 +18,54 @@ http://www.allyourprojectarebelongtous.com:4000
 //////////////////////////
 
 
-1. Get every Users data JSONs
-
-/users/
-
-
-2. Get certain Users JSONs based on requested object ID(Caution! object ID is different with userID! Do not use this route if you don't know about the object ID!)
-
-/users/'put object id in here'
-
-
-3. Get certain Users JSONs based on requested userID
-
-/users/find/'put userID in here'
-
-
 4. Update the existing data based on requested object ID(Make sure you send completed JSON Query when using this route)
 
-/users/update/'put object id in here'
+/users/update
+'put object id in requesting JSON'
 
 
-5. Create a new data(Make sure you send completed JSON Query when using this route)
+5. Registration: Create a new data(Make sure you send completed JSON Query when using this route)
 
-/users/add
+/users/register
+'put proper informations in requesting JSON'
 
 
 6. Delete the existing data based on requested object ID
 
-/users/delete/'put object id in here'
+/users/delete
+'put object id in requesting JSON'
 
 
 7. Login Function: Search valid login account(If invalid query is received, it gives nothing or error message)
 
-/users/login/'put userID in here'/'put userPW in here'
+/users/login
+'put userID & userPW in requesting JSON'
 
 
 /////////////////////////////
 //	Contacts Data	   //
 /////////////////////////////
 
-
-1. Get every Users data JSONs
-
-/contacts/
-
-
-2. Get certain Users JSONs based on requested object ID(Caution! object ID is different with userID! Do not use this route if you don't know about the object ID!)
-
-/contacts/'put object id in here'
-
-
 3. Get certain Users JSONs based on requested userID
 
-/contacts/find/'put userID in here'
+/contacts/find
+'put userID in requesting JSON'
 
 
 4. Update/Edit the existing data based on requested object ID(Make sure you send completed JSON Query when using this route)
 
-/contacts/update/'put object id in here'
+/contacts/update
+'put object id & other information in requesting JSON'
 
 
 5. Create a new data(Make sure you send completed JSON Query when using this route)
 
 /contacts/add
+'put proper informations in requesting JSON'
 
 
 6. Delete the existing data based on requested object ID
 
-/contacts/delete/'put object id in here'
+/contacts/delete
+'put object id in requesting JSON'
 
