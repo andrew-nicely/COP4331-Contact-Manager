@@ -1,5 +1,6 @@
 import React from 'react';
 import Popup from "reactjs-popup";
+import axios from 'axios';
 
 class AddContact extends React.Component {
   constructor(props) {
@@ -46,7 +47,7 @@ class AddContact extends React.Component {
   onSubmitNewContact = () => {
     console.log(this.state);
     const newContact = {
-      userID: 'TestID',
+      userID: "munejae",
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       emailAddress: this.state.email,
@@ -64,7 +65,7 @@ class AddContact extends React.Component {
         console.log("Added Contact");
         //const {onSignIn} = this.props;
         //onSignIn(user.userID);
-        closeModal();
+        this.closeModal();
         
         
       
@@ -110,7 +111,7 @@ class AddContact extends React.Component {
                     </div>
                   </fieldset>
                   <div className="">
-                    <input className="b ph3 pv1 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Add" />
+                    <input className="b ph3 pv1 input-reset ba b--black bg-transparent grow pointer f6 dib" onClick={() => this.onSubmitNewContact()} type="submit" value="Add" />
                   </div>
                 </div>
           </div>
