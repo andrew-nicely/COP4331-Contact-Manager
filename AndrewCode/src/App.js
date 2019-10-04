@@ -43,8 +43,8 @@ class App extends Component {
 
 	onLogIn = (userID) => {
 		console.log(userID);
-
-		axios.get('http://localhost:4000/contacts/find/'+userID)
+		
+		axios.post('http://localhost:4000/contacts/find/', {userID: userID})
 		.then(res => {
 			const {data} = res;
 			console.log(data);
@@ -60,7 +60,7 @@ class App extends Component {
 		});
 	    return (
 	      <div className="App">
-	        <NavBar loggedIn = {this.state.signedIn} onRouteChange = {this.onRouteChange}/>
+	        <NavBar loggedIn={this.state.signedIn} onRouteChange={this.onRouteChange}/>
 	        {
 	        	(this.state.route === 'landing' 
 	        	? (this.state.register === false ? <SignIn onSignIn={this.onLogIn} onRouteChange={this.onRouteChange}/> : <Register onRouteChange={this.onRouteChange}/>)

@@ -24,7 +24,7 @@ class SignIn extends React.Component{
 			userID: this.state.signInUsername,
 			userPW: this.state.signInPassword
 		}
-		axios.get('http://localhost:4000/users/login/'+user.userID+'/'+user.userPW)
+		axios.post('http://localhost:4000/users/login/')
 		.then(res => {
 			// 
 			const {data} = res;

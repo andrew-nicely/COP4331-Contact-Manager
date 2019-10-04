@@ -9,7 +9,7 @@ const NavBar = ({loggedIn, onRouteChange}) => {
 			<nav style={{backgroundColor: "gold"}}>
 				<div className="flex justify-between">
 				  <div className="outline w-20 pa3">
-				    <SignOutButton onRouteChange = {onRouteChange} text = {'Sign Out'}/>
+				    <SignOutButton onRouteChange={onRouteChange} text={'Sign Out'}/>
 				  </div>
 				  <div className="outline w-50 pa3">
 				    <p>Welcome</p>
