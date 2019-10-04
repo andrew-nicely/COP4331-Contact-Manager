@@ -44,7 +44,7 @@ class App extends Component {
 	onLogIn = (userID) => {
 		console.log(userID);
 		
-		axios.post('http://localhost:4000/contacts/find/', {userID: userID})
+		axios.post('http://localhost:4000/contacts/find', {userID: userID})
 		.then(res => {
 			const {data} = res;
 			console.log(data);
