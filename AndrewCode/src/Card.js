@@ -1,5 +1,6 @@
 import React from 'react';
 import Popup from "reactjs-popup";
+import axios from 'axios';
 
 class Card extends React.Component {
   constructor(props) {
@@ -19,11 +20,9 @@ class Card extends React.Component {
 
 deleteContact = () => {
 		console.log(this.state);
-		const deletedUser = {
-			_id: this.props._id;
-		}
-		const {_id} = this.props;
-		axios.delete('http://localhost:4000/contacts/delete', {_id: _id})
+    const id = this.props.id;
+    console.log(id);
+		axios.post('http://localhost:4000/contacts/delete', {_id: id})
 		.then(res => {
 			// 
 			const {data} = res;
