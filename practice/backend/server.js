@@ -4,7 +4,6 @@
 // Project: Contact Manager
 
 
-//const crypto = require('crypto');
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
@@ -13,6 +12,8 @@ const cors = require('cors');
 const dataRoutes = express.Router();
 const dataRoutesContact = express.Router();
 const PORT = 4000; // Port we'll use
+
+//const url = 'http://localhost:4000';
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
@@ -38,16 +39,7 @@ connection.once('open', function() {
 
 /* For debugging
 
-// Read every data in the database
-dataRoutes.route('/').get(function(req, res) {
-    User.find(function(err, users) {
-        if (err) {
-            console.log(err);
-        } else {
-            res.json(users);
-        }
-    });
-});
+
 
 // Read certain data based on requested object id
 dataRoutes.route('/:id').get(function(req, res) {
@@ -74,13 +66,26 @@ dataRoutes.route('/find/:userID').get(function(req, res) {
 // Delete every data with matching id
 dataRoutes.route("/exterminatus").delete(function(req, res) {
 
-    User.deleteMany({ userID: req.body.userID }, function(err, users){
+    User.deleteMany({ userID: req.body.userID }, function(err, trash){
         if (!err)
             res.send("end of the world");
     })
 })
 
+// Read every data in the database
+dataRoutes.route('/').get(function(req, res) {
+    User.find(function(err, users) {
+        if (err) {
+            console.log(err);
+        } else {
+            res.json(users);
+        }
+    });
+});
+
+
 */
+
 
 // Update the existing data
 dataRoutes.route('/update').post(function(req, res) {
@@ -208,20 +213,29 @@ dataRoutesContact.route('/add').post(function(req, res) {
 });
 
 // Delete the existing data
-dataRoutesContact.route('/delete').delete(function(req, res) {
+dataRoutesContact.route('/delete').post(function(req, res) {
+
+    console.log(req.body);
+
+
     Contact.findByIdAndRemove(req.body._id, function(err, contacts) {
+        
+        console.log(contacts);
+        
         if (!contacts)
-            res.status(404).send("Data is not found"); 
+            res.status(200).send("fail"); 
         else
             res.status(200).send("Data is successfully deleted");
     });
 });
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
+
 
 // Read every data in the database
 dataRoutesContact.route('/').get(function(req, res) {

@@ -24,7 +24,7 @@ class SignIn extends React.Component{
 			userID: this.state.signInUsername,
 			userPW: this.state.signInPassword
 		}
-		axios.post('http://localhost:4000/users/login/')
+		axios.post('http://localhost:4000/users/login/', user)
 		.then(res => {
 			// 
 			const {data} = res;
@@ -33,15 +33,14 @@ class SignIn extends React.Component{
 				console.log("Error");
 			
 			else
+			{
 				console.log("Login");
 				const {onSignIn} = this.props;
 				onSignIn(user.userID);
 				const {onRouteChange} = this.props;
 				onRouteChange('signin');
-				
-				
-			
-			});
+			}
+		});
 	}
 
 	render ()

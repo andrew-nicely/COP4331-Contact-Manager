@@ -1,5 +1,6 @@
 import React from 'react';
 import Popup from "reactjs-popup";
+import axios from 'axios';
 
 class Card extends React.Component {
   constructor(props) {
@@ -17,6 +18,23 @@ class Card extends React.Component {
     console.log("modal Closed");
   }
 
+deleteContact = () => {
+		console.log(this.state);
+    const id = this.props.id;
+    console.log(id);
+		axios.post('http://localhost:4000/contacts/delete', {_id: id})
+		.then(res => {
+			// 
+			const {data} = res;
+
+			if (data === "fail")
+				console.log("Not Deleted");
+			
+			else
+				console.log("Deleted");
+			});
+	}
+
   //toggleModal() {
     //if(this.state.open ===)
   //}
@@ -27,7 +45,7 @@ class Card extends React.Component {
       <div className='dib'>
         <div className='tc bg-light-yellow dib br3 pa3 ma2 grow shadow-5'>
           <div className='flex justify-center'>
-            <p class="f6 w-15 link dim br3 ba ph3 pv2 mb2 db black pointer">Delete</p>
+            <p class="f6 w-15 link dim br3 ba ph3 pv2 mb2 db black pointer" onClick={() => this.deleteContact()} >Delete</p>
           </div>
           <img alt='Robots' src={`https://robohash.org/${id}?size=150x150`}  onClick={this.openModal}/>
           <div>

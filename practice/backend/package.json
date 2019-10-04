@@ -8,5 +8,10 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "bcrypt-nodejs": "0.0.3",
+    "crypto": "^1.0.1"
+  }
 }
