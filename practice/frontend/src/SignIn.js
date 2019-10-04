@@ -6,7 +6,7 @@ class SignIn extends React.Component{
 		super(props);
 		this.state = {
 			signInUsername: '',
-			signInPassword: ''
+			signInPassword: '',
 		}
 	}
 
@@ -20,15 +20,11 @@ class SignIn extends React.Component{
 
 	onSubmitSignin = () => {
 		console.log(this.state);
-
 		const user = {
 			userID: this.state.signInUsername,
 			userPW: this.state.signInPassword
 		}
-
-		// Junejae modified this code for implementing POST function
-		axios.post('http://localhost:4000/users/login', { userID: user.userID, userPW: user.userPW})
-		
+		axios.post('http://localhost:4000/users/login/')
 		.then(res => {
 			// 
 			const {data} = res;
@@ -37,13 +33,14 @@ class SignIn extends React.Component{
 				console.log("Error");
 			
 			else
-				{
 				console.log("Login");
 				const {onSignIn} = this.props;
 				onSignIn(user.userID);
 				const {onRouteChange} = this.props;
 				onRouteChange('signin');
-				}
+				
+				
+			
 			});
 	}
 
@@ -52,7 +49,7 @@ class SignIn extends React.Component{
 		// eslint-disable-next-line
 		const {onRouteChange} = this.props;
 		return (
-			<article className="br3 ba --black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
+			<article className="br3 ba --black-10 mv4 w-100 w-50-m w-33-l mw6 shadow-5 center">
 				<main className="pa4 black-80">
 				  <div className="measure">
 				    <fieldset id="sign_up" className="ba b--transparent ph0 mh0">
@@ -70,7 +67,7 @@ class SignIn extends React.Component{
 				      <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Sign in" onClick={() => this.onSubmitSignin()} />
 				    </div>
 				    <div className="lh-copy mt3">
-				      <p onClick={() => this.onSubmitSignin()}className="f6 link dim black db pointer">Register</p>
+				      <p onClick={() => onRouteChange('Register')}className="f6 link dim black db pointer">Register</p>
 				      <a href="#0" className="f6 link dim black db">Forgot your password?</a>
 				    </div>
 				  </div>

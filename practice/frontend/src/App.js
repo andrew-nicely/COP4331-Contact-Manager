@@ -6,14 +6,17 @@ import Test from './Test';
 import CardList from './CardList';
 import SearchBar from './SearchBar';
 import axios from 'axios';
+import Register from './Register';
 
 class App extends Component {
 	constructor() {
 		super()
 		this.state = {
-			route: 'signin',
+			route: 'landing',
 			contacts: [],
 			searchField: '',
+			register : false,
+			signedIn: false,
 		}
 	}
 
@@ -25,7 +28,12 @@ class App extends Component {
 		}
 		else if (route === 'testsignout')
 		{
-			this.setState({route: 'signin'});
+			this.setState({route: 'landing'});
+			this.setState({register:false});
+		}
+		else if (route === 'Register')
+		{
+			this.setState({register:true})
 		}
 	}
 
@@ -35,13 +43,14 @@ class App extends Component {
 
 	onLogIn = (userID) => {
 		console.log(userID);
-
-		axios.get('http://localhost:4000/contacts/find/'+userID)
+		
+		axios.post('http://localhost:4000/contacts/find/', {userID: userID})
 		.then(res => {
 			const {data} = res;
 			console.log(data);
 			this.setState({contacts:data})
 		})
+		this.setState({signedIn: true});
 	}
 
   	render(){
@@ -51,14 +60,16 @@ class App extends Component {
 		});
 	    return (
 	      <div className="App">
-	        <NavBar />
+	        <NavBar loggedIn={this.state.signedIn} onRouteChange={this.onRouteChange}/>
 	        {
-	        	this.state.route === 'signin' ? <SignIn onSignIn={this.onLogIn} onRouteChange={this.onRouteChange}/> :
-	        	<div>
+	        	(this.state.route === 'landing' 
+	        	? (this.state.register === false ? <SignIn onSignIn={this.onLogIn} onRouteChange={this.onRouteChange}/> : <Register onRouteChange={this.onRouteChange}/>)
+	        	:
+	        	(<div>
 		        	<Test onRouteChange={this.onRouteChange}/>
 		        	<SearchBar searchChange={this.onSearchChange}/>
 		        	<CardList contacts={filteredContacts}/>
-	        	</div>
+	        	</div>))
 	    	}
 
 	      </div>
