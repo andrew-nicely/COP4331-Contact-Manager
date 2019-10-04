@@ -38,6 +38,35 @@ class Register extends React.Component{
 		this.setState({registerConfirmPassword: event.target.value});
 	}
 
+		onSubmitSignin = () => {
+		console.log(this.state);
+		const newUser = {
+			userID: this.state.registerUsername,
+			userPW: this.state.registerPassword,
+			firstName: this.state.registerFirstName,
+			lastName: this.state.registerLastName,
+			emailAddress: this.state.registerConfirmPassword,
+		}
+		axios.post('http://localhost:4000/register', newUser)
+		.then(res => {
+			// 
+			const {data} = res;
+
+			if (data === "fail")
+				console.log("Not signed up");
+			
+			else
+				console.log("Signed up");
+				//const {onSignIn} = this.props;
+				//onSignIn(user.userID);
+				const {onRouteChange} = this.props;
+				onRouteChange('signin');
+				
+				
+			
+			});
+	}
+
 	render ()
 	{
 		// eslint-disable-next-line
