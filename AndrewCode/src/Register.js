@@ -1,5 +1,5 @@
 import React from 'react';
-//import axios from 'axios';
+import axios from 'axios';
 
 class Register extends React.Component{
 	constructor(props){
@@ -38,7 +38,7 @@ class Register extends React.Component{
 		this.setState({registerConfirmPassword: event.target.value});
 	}
 
-		onSubmitSignin = () => {
+	onSubmitRegister = () => {
 		console.log(this.state);
 		const newUser = {
 			userID: this.state.registerUsername,
@@ -47,7 +47,7 @@ class Register extends React.Component{
 			lastName: this.state.registerLastName,
 			emailAddress: this.state.registerConfirmPassword,
 		}
-		axios.post('http://localhost:4000/register', newUser)
+		axios.post('http://localhost:4000/users/register', newUser)
 		.then(res => {
 			// 
 			const {data} = res;
@@ -60,7 +60,7 @@ class Register extends React.Component{
 				//const {onSignIn} = this.props;
 				//onSignIn(user.userID);
 				const {onRouteChange} = this.props;
-				onRouteChange('signin');
+				onRouteChange('testsignout');
 				
 				
 			
@@ -90,7 +90,7 @@ class Register extends React.Component{
 				        <input className="pa2 input-reset ba bg-transparent w-100" onChange={this.onRegisterFirstNameChange} type="email" name="email-address"  id="email-address" />
 				      </div>
 				      	<div className="mt3">
-				        <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
+				        <label className="db fw6 lh-copy f6" htmlFor="email-address">Last Name</label>
 				        <input className="pa2 input-reset ba bg-transparent w-100" onChange={this.onRegisterLastNameChange} type="email" name="email-address"  id="email-address" />
 				      </div>
 				      <div className="mt3">
@@ -107,7 +107,7 @@ class Register extends React.Component{
 				      </div>
 				    </fieldset>
 				    <div className="">
-				      <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" type="submit" value="Register" />
+				      <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" onClick={() => this.onSubmitRegister()} type="submit" value="Register" />
 				      <p onClick={() => onRouteChange('testsignout')} className="f6 link pa2 dim black db pointer">Return</p>
 				    </div>
 				  </div>

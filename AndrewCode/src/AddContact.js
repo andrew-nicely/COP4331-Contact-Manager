@@ -4,7 +4,13 @@ import Popup from "reactjs-popup";
 class AddContact extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { open: false };
+    this.state = { 
+    open: false, 
+    firstName: '',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
@@ -16,6 +22,55 @@ class AddContact extends React.Component {
     this.setState({ open: false });
     console.log("modal Closed");
   }
+
+  onAddFirstName = (event) => {
+    console.log(event.target.value);
+    this.setState({firstName: event.target.value});
+  }
+
+  onAddLastName = (event) => {
+    console.log(event.target.value);
+    this.setState({lastName: event.target.value});
+  }
+
+  onAddEmail = (event) => {
+    console.log(event.target.value);
+    this.setState({email: event.target.value});
+  }
+
+  onAddPhoneNumber = (event) => {
+    console.log(event.target.value);
+    this.setState({phoneNumber: event.target.value});
+  }
+
+  onSubmitNewContact = () => {
+    console.log(this.state);
+    const newContact = {
+      userID: 'TestID',
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      emailAddress: this.state.email,
+      phoneNum: this.state.phoneNumber,
+    }
+    axios.post('http://localhost:4000/contacts/add', newContact)
+    .then(res => {
+      // 
+      const {data} = res;
+
+      if (data === "fail")
+        console.log("Not Added");
+      
+      else
+        console.log("Added Contact");
+        //const {onSignIn} = this.props;
+        //onSignIn(user.userID);
+        closeModal();
+        
+        
+      
+      });
+  }
+
 
   //toggleModal() {
     //if(this.state.open ===)
@@ -39,19 +94,19 @@ class AddContact extends React.Component {
                     <legend className="f4 fw6 ph0 mh0">Add Contact</legend>
                     <div className="mt3">
                       <label className="db fw6 lh-copy f6" htmlFor="email-address">First Name</label>
-                      <input className="pa2 input-reset ba bg-transparent w-75" type="email" name="email-address"  id="email-address"/>
+                      <input className="pa2 input-reset ba bg-transparent w-75" onChange={this.onAddFirstName} type="email" name="email-address"  id="email-address"/>
                     </div>
                     <div className="mv3">
                       <label className="db fw6 lh-copy f6" htmlFor="password">Last Name</label>
-                      <input className="b pa2 input-reset ba bg-transparent w-75" type="email" name="email-address"  id="email-address"/>
+                      <input className="b pa2 input-reset ba bg-transparent w-75" onChange={this.onAddLastName} type="email" name="email-address"  id="email-address"/>
                     </div>
                     <div className="mv3">
                       <label className="db fw6 lh-copy f6" htmlFor="password">Email</label>
-                      <input className="b pa2 input-reset ba bg-transparent w-75" type="email" name="email-address"  id="email-address"/>
+                      <input className="b pa2 input-reset ba bg-transparent w-75" onChange={this.onAddEmail} type="email" name="email-address"  id="email-address"/>
                     </div>
                     <div className="mv3">
                       <label className="db fw6 lh-copy f6" htmlFor="password">Phone Number</label>
-                      <input className="b pa2 input-reset ba bg-transparent w-75" type="email" name="email-address"  id="email-address"/>
+                      <input className="b pa2 input-reset ba bg-transparent w-75" onChange={this.onAddPhoneNumber}type="email" name="email-address"  id="email-address"/>
                     </div>
                   </fieldset>
                   <div className="">
