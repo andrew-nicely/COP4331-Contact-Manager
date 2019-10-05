@@ -6,6 +6,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// Useless comments
 let User = new Schema({
     userID: {
         type: String
