@@ -2,7 +2,6 @@
 // COP 4331
 // server.js
 // HW: contact project
-// CommASDFASDGASFDGADRS
 
 const express = require('express');
 const cors = require('cors');
