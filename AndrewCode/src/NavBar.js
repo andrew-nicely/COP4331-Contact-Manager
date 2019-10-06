@@ -2,7 +2,7 @@ import React from 'react';
 import SignOutButton from './SignOutButton';
 import AddContact from './AddContact';
 
-const NavBar = ({loggedIn, onRouteChange}) => {
+const NavBar = ({loggedIn, onRouteChange, pullContacts}) => {
 	console.log(loggedIn);
 	if (loggedIn){
 		return(
@@ -15,7 +15,7 @@ const NavBar = ({loggedIn, onRouteChange}) => {
 				    <p className='center v-mid courier'>Contact Manager</p>
 				  </div>
 				  <div className="w-20 pa2">
-				    <AddContact />
+				    <AddContact pullContacts={pullContacts}/>
 				  </div>
 				</div>
 			</nav>

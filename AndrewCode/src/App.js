@@ -71,7 +71,7 @@ class App extends Component {
 		});
 	    return (
 	      <div className="App">
-	      	<NavBar loggedIn={this.state.signedIn} onRouteChange={this.onRouteChange}/>
+	      	<NavBar pullContacts={this.pullContacts} loggedIn={this.state.signedIn} onRouteChange={this.onRouteChange}/>
 	        {
 	        	(this.state.route === 'landing' 
 	        	? (this.state.register === false ? <SignIn onSignIn={this.onLogIn} onRouteChange={this.onRouteChange}/> : <Register onRouteChange={this.onRouteChange}/>)

@@ -46,6 +46,7 @@ class AddContact extends React.Component {
 
   onSubmitNewContact = () => {
     console.log(this.state);
+    const {pullContacts} = this.props;
     const newContact = {
       userID: "munejae",
       firstName: this.state.firstName,
@@ -66,6 +67,7 @@ class AddContact extends React.Component {
         //const {onSignIn} = this.props;
         //onSignIn(user.userID);
         this.closeModal();
+        pullContacts();
         
         
       
