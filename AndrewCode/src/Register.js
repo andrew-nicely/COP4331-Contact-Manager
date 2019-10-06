@@ -73,7 +73,7 @@ class Register extends React.Component{
 		// eslint-disable-next-line
 		const {onRouteChange} = this.props;
 		return (
-			<div className = 'SignIn'>
+			<div className='SignIn'>
 			<article className="br3 o-90 bg-light-gray ba --black-10 mv4 w-100 w-50-m w-33-l mw6 shadow-5 center">
 				<main className="pa4 black-80">
 					<div className='pb3'>

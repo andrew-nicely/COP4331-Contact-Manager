@@ -11,7 +11,7 @@ class App extends Component {
 	constructor() {
 		super()
 		this.state = {
-			route: 'landin',
+			route: 'landing',
 			contacts: [],
 			searchField: '',
 			register : false,
@@ -55,7 +55,7 @@ class App extends Component {
 	}
 
 	pullContacts = () => {
-		axios.post('http://localhost:4000/contacts/find', {userID: this.state.userID})
+		axios.post('http://localhost:4000/contacts/find', {userID: this.state.currentUser})
 		.then(res => {
 			const {data} = res;
 			console.log(data);

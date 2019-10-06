@@ -20,7 +20,7 @@ class Card extends React.Component {
 
 deleteContact = () => {
 		console.log(this.state);
-    const{pullContacts} = this.props;
+    const {pullContacts} = this.props;
     const id = this.props.id;
     console.log(id);
 		axios.post('http://localhost:4000/contacts/delete', {_id: id})
@@ -44,7 +44,7 @@ deleteContact = () => {
   //}
 
   render() {
-    const { name, email, id } = this.props;
+    const { name, email} = this.props;
     return (
       <div className='dib'>
         <div className='tc bg-light-gray dib br3 pa3 ma2 grow shadow-5 o-90'>
@@ -52,8 +52,8 @@ deleteContact = () => {
             <p className="f6 w-15 link dim br3 ba ph3 db black pointer" onClick={() => this.deleteContact()} >Delete</p>
           </div>
            <h2 className='f5 courier'>{name}</h2>
-          <img alt='Robots' className ='br-100 bg-dark-gray' src={`https://robohash.org/${name}?size=150x150`}  onClick={this.openModal}/>
-          <div className ='pt2'>
+          <img alt='Robots' className='br-100 bg-dark-gray' src={`https://robohash.org/${name}?size=150x150`}  onClick={this.openModal}/>
+          <div className='pt2'>
             <p className='f6'>{email}</p>
           </div>
         </div>
