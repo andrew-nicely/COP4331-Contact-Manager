@@ -1,32 +1,32 @@
 export const contacts = [
 	{
 		id: 1,
-		name: 'Izuku Midoriya',
+		firstName: 'Izuku Midoriya',
 		username: 'AllMightFanBoy',
-		email: 'IMidoriya@UA.edu',
+		emailAddress: 'IMidoriya@UA.edu',
 	},
 	{
 		id: 2,
-		name: 'Katsuki Bakugo',
+		firstName: 'Katsuki Bakugo',
 		username: 'AllMightFanBoy2',
-		email: 'KBakguo@UA.edu',
+		emailAddress: 'KBakguo@UA.edu',
 	},
 		{
 		id: 3,
-		name: 'Shoto Todoroki',
+		firstName: 'Shoto Todoroki',
 		username: 'TaleOfFireAndIce',
-		email: 'STodoroki@UA.edu',
+		emailAddress: 'STodoroki@UA.edu',
 	},
 		{
 		id: 4,
-		name: 'Tenya Iida',
+		firstName: 'Tenya Iida',
 		username: 'SpeedRacer',
-		email: 'TIida@UA.edu',
+		emailAddress: 'TIida@UA.edu',
 	},
 	{
 		id: 5,
-		name: 'Ochaco Uraraka',
+		firstName: 'Ochaco Uraraka',
 		username: 'ZeroGravity',
-		email: 'OUraraka@UA.edu',
+		emailAddress: 'OUraraka@UA.edu',
 	},
 ]

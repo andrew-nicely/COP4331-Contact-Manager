@@ -1,5 +1,19 @@
 .App {
+  height:100vh;
   text-align: center;
+}
+
+.SpaceBackground {
+  height:100vh;
+  text-align: center;
+  background-image: url("SpaceBG.jpg");
+  background-size: cover;
+  overflow: hidden;
+  background-color:red;
+}
+
+.popup-content{
+  padding:0px !important;
 }
 
 .App-logo {

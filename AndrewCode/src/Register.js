@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import './SignIn.css';
 
 class Register extends React.Component{
 	constructor(props){
@@ -72,14 +73,15 @@ class Register extends React.Component{
 		// eslint-disable-next-line
 		const {onRouteChange} = this.props;
 		return (
-			<article className="br3 ba --black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
+			<div className = 'SignIn'>
+			<article className="br3 o-90 bg-light-gray ba --black-10 mv4 w-100 w-50-m w-33-l mw6 shadow-5 center">
 				<main className="pa4 black-80">
 					<div className='pb3'>
-    					<p class="f6 br-pill bg-dark-green no-underline washed-green ba b--dark-green grow pv2 ph3 dib mr3 pointer">
+    					<p class="f6 br-pill no-underline ba b--black grow pv2 ph3 dib mr3 pointer">
       					Sign Up
     					</p>
-    					<p onClick={() => onRouteChange('testsignout')} class="f6 br-pill dark-green no-underline ba grow pv2 ph3 dib pointer">
-      					Learn More
+    					<p onClick={() => onRouteChange('testsignout')} class="f6 br-pill b--black no-underline ba grow pv2 ph3 dib pointer">
+      					Sign In
     					</p>
   					</div>
 				  <div className="measure">
@@ -87,32 +89,32 @@ class Register extends React.Component{
 				      <legend className="f4 fw6 ph0 mh0">Register</legend>
 				      	<div className="mt3">
 				        <label className="db fw6 lh-copy f6" htmlFor="email-address">First Name</label>
-				        <input className="pa2 input-reset ba bg-transparent w-100" onChange={this.onRegisterFirstNameChange} type="email" name="email-address"  id="email-address" />
+				        <input className="pa2 input-reset ba w-100" onChange={this.onRegisterFirstNameChange} type="email" name="email-address"  id="email-address" />
 				      </div>
 				      	<div className="mt3">
 				        <label className="db fw6 lh-copy f6" htmlFor="email-address">Last Name</label>
-				        <input className="pa2 input-reset ba bg-transparent w-100" onChange={this.onRegisterLastNameChange} type="email" name="email-address"  id="email-address" />
+				        <input className="pa2 input-reset ba w-100" onChange={this.onRegisterLastNameChange} type="email" name="email-address"  id="email-address" />
 				      </div>
 				      <div className="mt3">
 				        <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
-				        <input className="pa2 input-reset ba bg-transparent w-100" onChange={this.onRegisterUserNameChange} type="email" name="email-address"  id="email-address" />
+				        <input className="pa2 input-reset ba w-100" onChange={this.onRegisterUserNameChange} type="email" name="email-address"  id="email-address" />
 				      </div>
 				      <div className="mv3">
 				        <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
-				        <input className="b pa2 input-reset ba bg-transparent w-100" onChange={this.onRegisterPasswordChange} type="password" name="password"  id="password" />
+				        <input className="b pa2 input-reset ba w-100" onChange={this.onRegisterPasswordChange} type="password" name="password"  id="password" />
 				      </div>
 				      <div className="mv3">
 				        <label className="db fw6 lh-copy f6" htmlFor="password">Confirm Password</label>
-				        <input className="b pa2 input-reset ba bg-transparent w-100" onChange={this.onRegisterPasswordChange} type="password" name="password"  id="password" />
+				        <input className="b pa2 input-reset ba w-100" onChange={this.onRegisterPasswordChange} type="password" name="password"  id="password" />
 				      </div>
 				    </fieldset>
 				    <div className="">
 				      <input className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib" onClick={() => this.onSubmitRegister()} type="submit" value="Register" />
-				      <p onClick={() => onRouteChange('testsignout')} className="f6 link pa2 dim black db pointer">Return</p>
 				    </div>
 				  </div>
 				</main>
 			</article>
+			</div>
 		)
 	}
 }

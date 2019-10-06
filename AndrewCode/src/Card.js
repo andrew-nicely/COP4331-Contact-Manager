@@ -20,6 +20,7 @@ class Card extends React.Component {
 
 deleteContact = () => {
 		console.log(this.state);
+    const{pullContacts} = this.props;
     const id = this.props.id;
     console.log(id);
 		axios.post('http://localhost:4000/contacts/delete', {_id: id})
@@ -27,12 +28,15 @@ deleteContact = () => {
 			// 
 			const {data} = res;
 
-			if (data === "fail")
+			if (data === "fail") {
 				console.log("Not Deleted");
+      }
 			
-			else
+			else{
 				console.log("Deleted");
-			});
+        pullContacts();
+      }
+		});
 	}
 
   //toggleModal() {
@@ -43,13 +47,13 @@ deleteContact = () => {
     const { name, email, id } = this.props;
     return (
       <div className='dib'>
-        <div className='tc bg-light-yellow dib br3 pa3 ma2 grow shadow-5'>
+        <div className='tc bg-light-gray dib br3 pa3 ma2 grow shadow-5 o-90'>
           <div className='flex justify-center'>
-            <p class="f6 w-15 link dim br3 ba ph3 pv2 mb2 db black pointer" onClick={() => this.deleteContact()} >Delete</p>
+            <p className="f6 w-15 link dim br3 ba ph3 db black pointer" onClick={() => this.deleteContact()} >Delete</p>
           </div>
-          <img alt='Robots' src={`https://robohash.org/${id}?size=150x150`}  onClick={this.openModal}/>
-          <div>
-            <h2 className='f5'>{name}</h2>
+           <h2 className='f5 courier'>{name}</h2>
+          <img alt='Robots' className ='br-100 bg-dark-gray' src={`https://robohash.org/${name}?size=150x150`}  onClick={this.openModal}/>
+          <div className ='pt2'>
             <p className='f6'>{email}</p>
           </div>
         </div>
@@ -59,12 +63,15 @@ deleteContact = () => {
           onClose={this.closeModal}
         >
           <div className="modal">
-            <a className="close pointer" onClick={this.closeModal}>
-              &times;
-            </a>
+            <div className='bg-light-gray'>
               <label className="db fw6 lh-copy f6" htmlFor="email-address">Name</label>
-              <input className="pa2 input-reset ba bg-transparent w-100" value={name} type="email" name="email-address"  id="email-address" />
-            <p className='f6'>{email}</p>
+              <input className="pa2 input-reset ba bg-white w-75 center" defaultValue={name} type="email" name="email-address"  id="email-address" />
+              <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
+              <input className="pa2 input-reset ba bg-white w-75 center" defaultValue={email} type="email" name="email-address"  id="email-address" />
+            </div>
+            <div className="bg-light-gray">
+              <input className="b ph3 pv1 mv2 input-reset ba b--black bg-white grow pointer f6 dib" type="submit" value="Save" />
+            </div>
           </div>
         </Popup>
       </div>

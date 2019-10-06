@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import NavBar from './NavBar.js';
 import SignIn from './SignIn';
-import Test from './Test';
 import CardList from './CardList';
 import SearchBar from './SearchBar';
 import axios from 'axios';
@@ -12,11 +11,12 @@ class App extends Component {
 	constructor() {
 		super()
 		this.state = {
-			route: 'landing',
+			route: 'landin',
 			contacts: [],
 			searchField: '',
 			register : false,
-			signedIn: false,
+			signedIn: true,
+			currentUser: '',
 		}
 	}
 
@@ -50,7 +50,18 @@ class App extends Component {
 			console.log(data);
 			this.setState({contacts:data})
 		})
+		this.setState({currentUser: userID});
 		this.setState({signedIn: true});
+	}
+
+	pullContacts = () => {
+		axios.post('http://localhost:4000/contacts/find', {userID: this.state.userID})
+		.then(res => {
+			const {data} = res;
+			console.log(data);
+			this.setState({contacts:data})
+		})
+
 	}
 
   	render(){
@@ -60,15 +71,14 @@ class App extends Component {
 		});
 	    return (
 	      <div className="App">
-	        <NavBar loggedIn={this.state.signedIn} onRouteChange={this.onRouteChange}/>
+	      	<NavBar loggedIn={this.state.signedIn} onRouteChange={this.onRouteChange}/>
 	        {
 	        	(this.state.route === 'landing' 
 	        	? (this.state.register === false ? <SignIn onSignIn={this.onLogIn} onRouteChange={this.onRouteChange}/> : <Register onRouteChange={this.onRouteChange}/>)
 	        	:
-	        	(<div>
-		        	<Test onRouteChange={this.onRouteChange}/>
+	        	(<div className='SpaceBackground'>
 		        	<SearchBar searchChange={this.onSearchChange}/>
-		        	<CardList contacts={filteredContacts}/>
+		        	<CardList pullContacts={this.pullContacts} contacts={filteredContacts}/>
 	        	</div>))
 	    	}
 
