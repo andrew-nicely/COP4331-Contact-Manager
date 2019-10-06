@@ -64,6 +64,10 @@ class App extends Component {
 
 	}
 
+	testClickFunction = () => {
+		console.log("Clicked");
+	}
+
   	render(){
   		const filteredContacts = this.state.contacts.filter(contacts => {
 			  console.log("Filtered", contacts);
@@ -78,7 +82,7 @@ class App extends Component {
 	        	:
 	        	(<div className='SpaceBackground'>
 		        	<SearchBar searchChange={this.onSearchChange}/>
-		        	<CardList pullContacts={this.pullContacts} contacts={filteredContacts}/>
+		        	<CardList testClickFunction={this.testClickFunction} pullContacts={this.pullContacts} contacts={filteredContacts}/>
 	        	</div>))
 	    	}
 

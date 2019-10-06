@@ -1,9 +1,9 @@
 import React from 'react';
 import Card from './Card';
 
-const CardList = ({ contacts , pullContacts}) => {
+const CardList = ({ contacts , pullContacts, testClickFunction}) => {
 	const cardsArray = contacts.map ((user, i) => {
-		return 	<Card pullContacts={pullContacts} key={i} id={contacts[i]._id} name={contacts[i].firstName} email={contacts[i].emailAddress} />
+		return 	<Card testClickFunction={testClickFunction} pullContacts={pullContacts} key={i} id={contacts[i]._id} name={contacts[i].firstName} email={contacts[i].emailAddress} />
 	}
 	)
 	return (
