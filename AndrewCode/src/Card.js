@@ -107,8 +107,8 @@ deleteContact = () => {
            <h2 className='f5 courier'>{`${firstName} ${lastName}`}</h2>
           <img alt='Robots' className='br-100 bg-dark-gray' src={`https://robohash.org/${firstName}?size=150x150`}  onClick={this.openModal}/>
           <div className='pt2'>
-            <p className='f6'>{email}</p>
-            <p className='f6'>{phoneNumber}</p>
+            <p className='f5'>{email}</p>
+            <p className='f5'>{phoneNumber}</p>
           </div>
         </div>
         <Popup

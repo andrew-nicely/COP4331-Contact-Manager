@@ -12,7 +12,7 @@ const NavBar = ({loggedIn, onRouteChange, pullContacts, currentUser}) => {
 				    <SignOutButton onRouteChange={onRouteChange} text={'Sign Out'}/>
 				  </div>
 				  <div className="w-50 pa3 db">
-				    <p className='center v-mid courier'>Contact Manager</p>
+				    <p className='center f3 v-mid courier'>Manager of Contact</p>
 				  </div>
 				  <div className="w-20 pa2">
 				    <AddContact currentUser={currentUser} pullContacts={pullContacts}/>
@@ -26,7 +26,7 @@ const NavBar = ({loggedIn, onRouteChange, pullContacts, currentUser}) => {
 			<nav className='bg-light-gray'>
 				<div className="flex justify-center">
 				  <div className="w-50 pa3">
-				    <p>Contact Manager</p>
+				    <p className="f3">Manager of Contact</p>
 				  </div>
 				</div>
 			</nav>
