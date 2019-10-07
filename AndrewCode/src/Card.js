@@ -5,7 +5,13 @@ import axios from 'axios';
 class Card extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { open: false };
+    this.state = { 
+      open: false
+      firstName = this.props.firstName,
+      lastName = this.props.lastName,
+      email = this.props.email,
+      phoneNumer = this.props.phoneNumber, 
+    };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
@@ -17,6 +23,51 @@ class Card extends React.Component {
     this.setState({ open: false });
     console.log("modal Closed");
   }
+
+  onFirstNameChange = (event) => {
+    this.setState({firstName = event.target.value})
+  }
+
+  onLastNameChange = (event) => {
+    this.setState({lastName = event.target.value})
+  }
+
+  onEmailChange = (event) => {
+    this.setState({email = event.target.value})
+  }
+
+  onPhoneNumberChange = (event) => {
+    this.setState({phoneNumber = event.target.value};
+  }
+
+editContact = () => {
+    const {pullContacts} = this.props;
+    //const id = this.props.id;
+    //console.log(id);
+    const editedUser = {
+      userID : 'munejae',
+      firstName : this.state.firstName,
+      lastName : this.state.lastName,
+      email : this.state.email,
+      phoneNumber : this.state.phoneNumber,
+    }
+    console.log(editedUser);
+    axios.post('http://localhost:4000/contacts/update', editedUser)
+    .then(res => {
+      // 
+      const {data} = res;
+
+      if (data === "fail") {
+        console.log("Not Edited");
+      }
+      
+      else{
+        console.log("Edited");
+        pullContacts();
+      }
+    });
+  }
+
 
 deleteContact = () => {
 		console.log(this.state);
@@ -44,7 +95,7 @@ deleteContact = () => {
   //}
 
   render() {
-    const { name, email } = this.props;
+    const { firstName, lastName, email, phoneNumber } = this.props;
     return (
       <div className='dib'>
         <div className='tc bg-light-gray dib br3 pa3 ma2 shadow-5 o-90'>
@@ -64,13 +115,17 @@ deleteContact = () => {
         >
           <div className="modal">
             <div className='bg-light-gray'>
-              <label className="db fw6 lh-copy f6" htmlFor="email-address">Name</label>
-              <input className="pa2 input-reset ba bg-white w-75 center" defaultValue={name} type="email" name="email-address"  id="email-address" />
+              <label className="db fw6 lh-copy f6" htmlFor="email-address">First Name</label>
+              <input className="pa2 input-reset ba bg-white w-75 center" defaultValue={firstName} onChange={this.onFirstNameChange} type="email" name="email-address"  id="email-address" />
+              <label className="db fw6 lh-copy f6" htmlFor="email-address">Last Name</label>
+              <input className="pa2 input-reset ba bg-white w-75 center" defaultValue={lastName} onChange={this.onLastNameChange} type="email" name="email-address"  id="email-address" />
               <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
-              <input className="pa2 input-reset ba bg-white w-75 center" defaultValue={email} type="email" name="email-address"  id="email-address" />
+              <input className="pa2 input-reset ba bg-white w-75 center" defaultValue={email} onChange={this.onEmailChange} type="email" name="email-address"  id="email-address" />
+              <label className="db fw6 lh-copy f6" htmlFor="email-address">Phone Number</label>
+              <input className="pa2 input-reset ba bg-white w-75 center" defaultValue={phoneNumber} onChange={this.onPhoneNumberChange} type="email" name="email-address"  id="email-address" />
             </div>
             <div className="bg-light-gray">
-              <input className="b ph3 pv1 mv2 input-reset ba b--black bg-white grow pointer f6 dib" type="submit" value="Save" />
+              <p className="b ph3 pv1 mv2 input-reset ba b--black bg-white grow pointer f6 dib" onClick={this.editContact}/>Save Changes</p>
             </div>
           </div>
         </Popup>
