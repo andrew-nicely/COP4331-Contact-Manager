@@ -48,7 +48,7 @@ class AddContact extends React.Component {
     console.log(this.state);
     const {pullContacts} = this.props;
     const newContact = {
-      userID: "munejae",
+      userID: this.props.currentUser,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       emailAddress: this.state.email,
