@@ -6,11 +6,11 @@ class Card extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      open: false
-      firstName = this.props.firstName,
-      lastName = this.props.lastName,
-      email = this.props.email,
-      phoneNumer = this.props.phoneNumber, 
+      open: false,
+      firstName : this.props.firstName,
+      lastName : this.props.lastName,
+      email : this.props.email,
+      phoneNumber : this.props.phoneNumber, 
     };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -25,19 +25,19 @@ class Card extends React.Component {
   }
 
   onFirstNameChange = (event) => {
-    this.setState({firstName = event.target.value})
+    this.setState({firstName : event.target.value})
   }
 
   onLastNameChange = (event) => {
-    this.setState({lastName = event.target.value})
+    this.setState({lastName : event.target.value})
   }
 
   onEmailChange = (event) => {
-    this.setState({email = event.target.value})
+    this.setState({email : event.target.value})
   }
 
   onPhoneNumberChange = (event) => {
-    this.setState({phoneNumber = event.target.value};
+    this.setState({phoneNumber : event.target.value});
   }
 
 editContact = () => {
@@ -45,11 +45,12 @@ editContact = () => {
     //const id = this.props.id;
     //console.log(id);
     const editedUser = {
+      _id: this.props.id,
       userID : 'munejae',
       firstName : this.state.firstName,
       lastName : this.state.lastName,
-      email : this.state.email,
-      phoneNumber : this.state.phoneNumber,
+      emailAddress : this.state.email,
+      phoneNum : this.state.phoneNumber,
     }
     console.log(editedUser);
     axios.post('http://localhost:4000/contacts/update', editedUser)
@@ -102,8 +103,8 @@ deleteContact = () => {
           <div className='flex justify-center'>
             <p className="f6 link dim br3 ba ph3 db black pointer" onClick={this.deleteContact} >Delete</p>
           </div>
-           <h2 className='f5 courier'>{name}</h2>
-          <img alt='Robots' className='br-100 bg-dark-gray' src={`https://robohash.org/${name}?size=150x150`}  onClick={this.openModal}/>
+           <h2 className='f5 courier'>{firstName}</h2>
+          <img alt='Robots' className='br-100 bg-dark-gray' src={`https://robohash.org/${firstName}?size=150x150`}  onClick={this.openModal}/>
           <div className='pt2'>
             <p className='f6'>{email}</p>
           </div>
@@ -125,7 +126,7 @@ deleteContact = () => {
               <input className="pa2 input-reset ba bg-white w-75 center" defaultValue={phoneNumber} onChange={this.onPhoneNumberChange} type="email" name="email-address"  id="email-address" />
             </div>
             <div className="bg-light-gray">
-              <p className="b ph3 pv1 mv2 input-reset ba b--black bg-white grow pointer f6 dib" onClick={this.editContact}/>Save Changes</p>
+              <p className="b ph3 pv1 mv2 input-reset ba b--black bg-white grow pointer f6 dib" onClick={this.editContact}>Save Changes</p>
             </div>
           </div>
         </Popup>
