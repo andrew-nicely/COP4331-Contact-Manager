@@ -44,12 +44,12 @@ deleteContact = () => {
   //}
 
   render() {
-    const { name, email, testClickFunction} = this.props;
+    const { name, email } = this.props;
     return (
       <div className='dib'>
         <div className='tc bg-light-gray dib br3 pa3 ma2 shadow-5 o-90'>
           <div className='flex justify-center'>
-            <p className="f6 link dim br3 ba ph3 db black pointer" onClick={testClickFunction} >Delete</p>
+            <p className="f6 link dim br3 ba ph3 db black pointer" onClick={this.deleteContact} >Delete</p>
           </div>
            <h2 className='f5 courier'>{name}</h2>
           <img alt='Robots' className='br-100 bg-dark-gray' src={`https://robohash.org/${name}?size=150x150`}  onClick={this.openModal}/>

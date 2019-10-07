@@ -8,6 +8,7 @@ class Register extends React.Component{
 		this.state = {
 			registerFirstName: '',
 			registerLastName: '',
+			registerEmail: '',
 			registerUsername: '',
 			registerPassword: '',
 			registerConfirmPassword: '',
@@ -22,6 +23,11 @@ class Register extends React.Component{
 	onRegisterLastNameChange = (event) => {
 		console.log(event.target.value);
 		this.setState({registerLastName: event.target.value});
+	}
+
+	onRegisterEmailChange = (event) => {
+		console.log(event.target.value);
+		this.setState({registerEmail: event.target.value});
 	}
 
 	onRegisterUserNameChange = (event) => {
@@ -95,15 +101,19 @@ class Register extends React.Component{
 				        <label className="db fw6 lh-copy f6" htmlFor="email-address">Last Name</label>
 				        <input className="pa2 input-reset ba w-100" onChange={this.onRegisterLastNameChange} type="email" name="email-address"  id="email-address" />
 				      </div>
-				      <div className="mt3">
+					  	<div className="mt3">
 				        <label className="db fw6 lh-copy f6" htmlFor="email-address">Email</label>
+				        <input className="pa2 input-reset ba w-100" onChange={this.onRegisterEmailChange} type="email" name="email-address"  id="email-address" />
+				      </div>
+				      	<div className="mt3">
+				        <label className="db fw6 lh-copy f6" htmlFor="email-address">ID</label>
 				        <input className="pa2 input-reset ba w-100" onChange={this.onRegisterUserNameChange} type="email" name="email-address"  id="email-address" />
 				      </div>
-				      <div className="mv3">
+				      	<div className="mv3">
 				        <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
 				        <input className="b pa2 input-reset ba w-100" onChange={this.onRegisterPasswordChange} type="password" name="password"  id="password" />
 				      </div>
-				      <div className="mv3">
+				      	<div className="mv3">
 				        <label className="db fw6 lh-copy f6" htmlFor="password">Confirm Password</label>
 				        <input className="b pa2 input-reset ba w-100" onChange={this.onRegisterPasswordChange} type="password" name="password"  id="password" />
 				      </div>
