@@ -7,7 +7,7 @@ import SearchBar from './SearchBar';
 import axios from 'axios';
 import Register from './Register';
 
-const url = "http://localhost:4000/";
+const url = "http://localhost:4404/";
 
 class App extends Component {
 	constructor() {

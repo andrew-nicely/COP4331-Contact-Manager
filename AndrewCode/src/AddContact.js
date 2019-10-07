@@ -2,7 +2,7 @@ import React from 'react';
 import Popup from "reactjs-popup";
 import axios from 'axios';
 
-const url = "http://localhost:4000/";
+const url = "http://localhost:4404/";
 
 class AddContact extends React.Component {
   constructor(props) {

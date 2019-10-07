@@ -11,9 +11,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const dataRoutes = express.Router();
 const dataRoutesContact = express.Router();
-const PORT = 4000; // Port we'll use
+const PORT = 4404; // Port we'll use
 
-//const url = 'http://localhost:4000';
+//const url = 'http://localhost:4404';
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
