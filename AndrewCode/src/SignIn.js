@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import './SignIn.css';
 
+const url = "http://localhost:4000/";
+
 class SignIn extends React.Component{
 	constructor(props){
 		super(props);
@@ -25,7 +27,7 @@ class SignIn extends React.Component{
 			userID: this.state.signInUsername,
 			userPW: this.state.signInPassword
 		}
-		axios.post('http://localhost:4000/users/login/', user)
+		axios.post(url + 'users/login/', user)
 		.then(res => {
 			// 
 			const {data} = res;

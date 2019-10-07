@@ -7,6 +7,8 @@ import SearchBar from './SearchBar';
 import axios from 'axios';
 import Register from './Register';
 
+const url = "http://localhost:4000/";
+
 class App extends Component {
 	constructor() {
 		super()
@@ -45,7 +47,7 @@ class App extends Component {
 	onLogIn = (userID) => {
 		console.log(userID);
 		
-		axios.post('http://localhost:4000/contacts/find', {userID: userID})
+		axios.post(url + 'contacts/find', {userID: userID})
 		.then(res => {
 			const {data} = res;
 			console.log(data);
@@ -56,7 +58,7 @@ class App extends Component {
 	}
 
 	pullContacts = () => {
-		axios.post('http://localhost:4000/contacts/find', {userID: this.state.currentUser})
+		axios.post(url + 'contacts/find', {userID: this.state.currentUser})
 		.then(res => {
 			const {data} = res;
 			console.log(data);

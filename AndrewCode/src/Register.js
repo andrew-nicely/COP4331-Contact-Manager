@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import './SignIn.css';
 
+const url = "http://localhost:4000/";
+
 class Register extends React.Component{
 	constructor(props){
 		super(props);
@@ -51,7 +53,7 @@ class Register extends React.Component{
 			emailAddress: this.state.registerEmail
 		};
 		
-		axios.post('http://localhost:4000/users/register', newUser)
+		axios.post(url + 'users/register', newUser)
 		.then(res => {
 			// 
 			const {data} = res;

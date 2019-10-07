@@ -2,6 +2,8 @@ import React from 'react';
 import Popup from "reactjs-popup";
 import axios from 'axios';
 
+const url = "http://localhost:4000/";
+
 class Card extends React.Component {
   constructor(props) {
     super(props);
@@ -53,7 +55,7 @@ editContact = () => {
       phoneNum : this.state.phoneNumber,
     }
     console.log(editedUser);
-    axios.post('http://localhost:4000/contacts/update', editedUser)
+    axios.post(url + 'contacts/update', editedUser)
     .then(res => {
       // 
       const {data} = res;
@@ -76,7 +78,7 @@ deleteContact = () => {
     const {pullContacts} = this.props;
     const id = this.props.id;
     console.log(id);
-		axios.post('http://localhost:4000/contacts/delete', {_id: id})
+		axios.post(url + 'contacts/delete', {_id: id})
 		.then(res => {
 			// 
 			const {data} = res;

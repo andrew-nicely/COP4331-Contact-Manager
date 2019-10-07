@@ -2,6 +2,8 @@ import React from 'react';
 import Popup from "reactjs-popup";
 import axios from 'axios';
 
+const url = "http://localhost:4000/";
+
 class AddContact extends React.Component {
   constructor(props) {
     super(props);
@@ -54,7 +56,7 @@ class AddContact extends React.Component {
       emailAddress: this.state.email,
       phoneNum: this.state.phoneNumber,
     }
-    axios.post('http://localhost:4000/contacts/add', newContact)
+    axios.post(url + 'contacts/add', newContact)
     .then(res => {
       // 
       const {data} = res;
