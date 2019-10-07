@@ -72,6 +72,10 @@ dataRoutes.route("/exterminatus").delete(function(req, res) {
     })
 })
 
+
+
+
+*/
 // Read every data in the database
 dataRoutes.route('/').get(function(req, res) {
     User.find(function(err, users) {
@@ -82,10 +86,6 @@ dataRoutes.route('/').get(function(req, res) {
         }
     });
 });
-
-
-*/
-
 
 // Update the existing data
 dataRoutes.route('/update').post(function(req, res) {
@@ -182,9 +182,12 @@ dataRoutesContact.route('/find').post(function(req, res) {
 // Update the existing data
 dataRoutesContact.route('/update').post(function(req, res) {
     Contact.findById(req.body._id, function(err, contacts) {
+        
         if (!contacts)
             res.status(404).send("data is not found");
+
         else
+        {
             contacts.userID = req.body.userID;
             contacts.firstName = req.body.firstName;
             contacts.lastName = req.body.lastName;
@@ -192,11 +195,12 @@ dataRoutesContact.route('/update').post(function(req, res) {
             contacts.phoneNum = req.body.phoneNum;
 
             contacts.save().then(contacts => {
-                res.json('A contact is updated!');
+                res.json(contacts);
             })
             .catch(err => {
                 res.status(400).send("Update is not possible");
             });
+        }
     });
 });
 
@@ -230,14 +234,6 @@ dataRoutesContact.route('/delete').post(function(req, res) {
 });
 
 
-//////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////
-
-/*
-
-
-// Read every data in the database
 dataRoutesContact.route('/').get(function(req, res) {
     Contact.find(function(err, contacts) {
         if (err) {
@@ -247,6 +243,16 @@ dataRoutesContact.route('/').get(function(req, res) {
         }
     });
 });
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+
+
+// Read every data in the database
+
 
 // Read certain data based on requested object id
 dataRoutesContact.route('/:id').get(function(req, res) {
