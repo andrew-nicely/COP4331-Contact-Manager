@@ -52,8 +52,9 @@ class Register extends React.Component{
 			userPW: this.state.registerPassword,
 			firstName: this.state.registerFirstName,
 			lastName: this.state.registerLastName,
-			emailAddress: this.state.registerConfirmPassword,
-		}
+			emailAddress: this.state.registerEmail
+		};
+		
 		axios.post('http://localhost:4000/users/register', newUser)
 		.then(res => {
 			// 
