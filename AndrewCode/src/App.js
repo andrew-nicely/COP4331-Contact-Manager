@@ -13,11 +13,11 @@ class App extends Component {
 	constructor() {
 		super()
 		this.state = {
-			route: 'landing',
+			route: 'landin',
 			contacts: [],
 			searchField: '',
 			register : false,
-			signedIn: false,
+			signedIn: true,
 			currentUser: '',
 		}
 	}

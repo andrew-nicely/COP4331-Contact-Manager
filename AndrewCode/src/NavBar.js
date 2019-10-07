@@ -6,13 +6,13 @@ const NavBar = ({loggedIn, onRouteChange, pullContacts, currentUser}) => {
 	console.log(loggedIn);
 	if (loggedIn){
 		return(
-			<nav className='bg-light-gray'>
+			<nav className='bg-dark-gray'>
 				<div className="flex justify-between">
 				  <div className="w-20 pa2">
 				    <SignOutButton onRouteChange={onRouteChange} text={'Sign Out'}/>
 				  </div>
 				  <div className="w-50 pa3 db">
-				    <p className='center f3 v-mid courier'>Manager of Contact</p>
+				    <p className='center f3 v-mid courier light-gray'>Manager of Contact</p>
 				  </div>
 				  <div className="w-20 pa2">
 				    <AddContact currentUser={currentUser} pullContacts={pullContacts}/>
@@ -23,10 +23,10 @@ const NavBar = ({loggedIn, onRouteChange, pullContacts, currentUser}) => {
 	}
 	else{
 		return (
-			<nav className='bg-light-gray'>
+			<nav className='bg-dark-gray'>
 				<div className="flex justify-center">
 				  <div className="w-50 pa3">
-				    <p className="f3">Manager of Contact</p>
+				    <p className="f3 courier light-gray">Manager of Contact</p>
 				  </div>
 				</div>
 			</nav>
