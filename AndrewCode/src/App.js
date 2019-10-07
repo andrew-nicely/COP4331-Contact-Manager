@@ -15,7 +15,7 @@ class App extends Component {
 			contacts: [],
 			searchField: '',
 			register : false,
-			signedIn: true,
+			signedIn: false,
 			currentUser: '',
 		}
 	}
@@ -28,6 +28,7 @@ class App extends Component {
 		}
 		else if (route === 'testsignout')
 		{
+			this.setState({signedIn: false });
 			this.setState({route: 'landing'});
 			this.setState({register:false});
 		}

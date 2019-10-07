@@ -39,11 +39,7 @@ class Register extends React.Component{
 		console.log(event.target.value);
 		this.setState({registerPassword: event.target.value});
 	}
-
-		onRegisterConfirmPasswordChange = (event) => {
-		console.log(event.target.value);
-		this.setState({registerConfirmPassword: event.target.value});
-	}
+	
 
 	onSubmitRegister = () => {
 		console.log(this.state);
@@ -112,10 +108,6 @@ class Register extends React.Component{
 				      </div>
 				      	<div className="mv3">
 				        <label className="db fw6 lh-copy f6" htmlFor="password">Password</label>
-				        <input className="b pa2 input-reset ba w-100" onChange={this.onRegisterPasswordChange} type="password" name="password"  id="password" />
-				      </div>
-				      	<div className="mv3">
-				        <label className="db fw6 lh-copy f6" htmlFor="password">Confirm Password</label>
 				        <input className="b pa2 input-reset ba w-100" onChange={this.onRegisterPasswordChange} type="password" name="password"  id="password" />
 				      </div>
 				    </fieldset>
