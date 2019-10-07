@@ -46,7 +46,7 @@ editContact = () => {
     //console.log(id);
     const editedUser = {
       _id: this.props.id,
-      userID : 'munejae',
+      userID : this.props.userID,
       firstName : this.state.firstName,
       lastName : this.state.lastName,
       emailAddress : this.state.email,

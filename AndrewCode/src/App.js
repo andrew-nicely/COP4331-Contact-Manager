@@ -83,7 +83,7 @@ class App extends Component {
 	        	:
 	        	(<div className='SpaceBackground'>
 		        	<SearchBar searchChange={this.onSearchChange}/>
-		        	<CardList testClickFunction={this.testClickFunction} pullContacts={this.pullContacts} contacts={filteredContacts}/>
+		        	<CardList currentUser={this.state.currentUser} testClickFunction={this.testClickFunction} pullContacts={this.pullContacts} contacts={filteredContacts}/>
 	        	</div>))
 	    	}
 
