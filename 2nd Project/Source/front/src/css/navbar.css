@@ -1,0 +1,23 @@
+.navbar {
+  height: 77px;
+}
+
+.navbar .home{
+  font-size: 1.5rem;
+}
+
+.navbar .notes{
+  font-size: 1.5rem;
+}
+
+.navbar .test{
+  font-size: 1.5rem;
+}
+
+.navbar .log{
+  font-size: 1.5rem;
+}
+
+.navbar .user{
+  font-size: 1.5rem;
+}

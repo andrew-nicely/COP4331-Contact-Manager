@@ -1,0 +1,9 @@
+.Register {
+  height:100vh;
+  text-align: center;
+  background-image: url('../public/img/pepegadark.jpg');
+  background-position: bottom;
+  background-size: cover;
+  overflow: hidden;
+  background-color:black;
+}

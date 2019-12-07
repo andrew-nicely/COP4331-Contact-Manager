@@ -1,0 +1,529 @@
+/* ------ */
+/* CSS Grid */
+/* ------ */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 500px auto 500px;
+  grid-template-rows: 100px 673px 0px;
+  background-color: #2196F3;
+}
+
+.grid-item1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  background-color: #b7a469;
+  padding: 20px;
+}
+
+.grid-item2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  background-color: #b7a469;
+  padding: 20px;
+  font-size: 60px
+}
+
+.grid-item3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+  border-right: 2px solid black;
+  background-color: #b7a469;
+  padding: 20px;
+
+}
+
+.grid-item4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: #ffffff;
+  padding: 20px;
+  
+}
+
+.grid-item5 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: #ffffff;
+  padding: 20px;
+}
+
+.grid-item6 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: #ffffff;
+  padding: 20px;
+}
+/*
+.grid-item7 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+}
+
+.grid-item8 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+}
+
+.grid-item9 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+}
+*/
+
+/* ------ */
+/* Home */
+/* ------ */
+
+.homeLogOut {
+  background-color: #000000;
+  border: none;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  padding: 15px 50px;
+  
+}
+
+.homeProfile {
+  position: relative;
+  left: -25px;
+  background-color: #000000;
+  border: none;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  padding: 15px 40px;
+}
+
+.homeNewContact {
+  background-color: #000000;
+  border: none;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  padding: 15px 32px;
+}
+
+.homeFirstName {
+	height:28px;
+	font-size:28px;
+	display: inline-block;
+}
+
+.homeLastName {
+	height:28px;
+	font-size:28px;
+	display: inline-block;
+}
+
+.homePhoneNumber {
+	height:28px;
+	font-size:28px;
+	display: inline-block;
+}
+
+.homeSearch {
+	position: relative;
+	top: -4px;
+	left: 30px;
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	height: 28px;
+	width: 120px;
+	font-size: 12px;
+}
+
+.homeContactList {
+	height: 235px;
+	width: 345px;
+	font-size: 24px;
+}
+
+.homeEdit {
+	position: relative;
+	top: -135px;
+	left: 30px;
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	height: 28px;
+	width: 120px;
+	font-size: 12px;
+}
+
+.homeDelete {
+	position: relative;
+	top: -125px;
+	left: 379px;
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	height: 28px;
+	width: 120px;
+	font-size: 12px;
+}
+
+/* ------ */
+/* Login */
+/* ------ */
+
+.loginUserName {
+	text-indent: 5px;
+	height:36px;
+	width: 500px;
+	font-size:20px;
+	display: inline-block;
+}
+
+.loginPassWord {
+	text-indent: 5px;
+	height:36px;
+	width: 500px;
+	font-size:20px;
+	display: inline-block;
+}
+
+.loginLogin {
+	position: relative;
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	height: 42px;
+	width: 504px;
+	font-size: 16px;
+}
+
+.loginLogo {
+	position: relative;
+	left: 135px;
+}
+
+.loginLabel {
+	position: relative;
+	left: 190px;
+	font-size: 40px;
+}
+
+.loginCreateAccount {
+	position: relative;
+	left: 285px;
+}
+
+.loginForgotPassword {
+	
+}
+
+/* ------ */
+/* Forgot */
+/* ------ */
+
+.forgotBack {
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+	padding: 15px 32px;
+}
+
+.forgotPasswordLabel {
+	position: relative;
+	left: 108px;
+	font-size: 40px;
+}
+
+.forgotUser {
+	text-indent: 5px;
+	height:36px;
+	width: 500px;
+	font-size:20px;
+	display: inline-block;
+}
+
+.forgotEmail {
+	text-indent: 5px;
+	height:36px;
+	width: 500px;
+	font-size:20px;
+	display: inline-block;
+}
+
+.forgotReset {
+	position: relative;
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	height: 42px;
+	width: 504px;
+	font-size: 16px;
+}
+
+.forgotLogo {
+	position: relative;
+	left: 135px;
+}
+
+/* ------ */
+/* Contact */
+/* ------ */
+
+.contactBack {
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+	padding: 15px 32px;
+}
+
+.contactInfoLabel {
+	position: relative;
+	left: 108px;
+	font-size: 40px;
+}
+
+.contactFirstName {
+	text-indent: 5px;
+	height:36px;
+	width: 500px;
+	font-size:20px;
+	display: inline-block;	
+}
+
+.contactLastName {
+	text-indent: 5px;
+	height:36px;
+	width: 500px;
+	font-size:20px;
+	display: inline-block;	
+}
+
+.contactEmail {
+	text-indent: 5px;
+	height:36px;
+	width: 500px;
+	font-size:20px;
+	display: inline-block;
+}
+
+.contactTelephone {
+	text-indent: 5px;
+	height:36px;
+	width: 500px;
+	font-size:20px;
+	display: inline-block;	
+}
+
+.contactCreate {
+	position: relative;
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	height: 42px;
+	width: 504px;
+	font-size: 16px;
+}
+
+/* ------ */
+/* Signup */
+/* ------ */
+
+.signupBack {
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	font-size: 16px;
+	padding: 15px 32px;
+}
+
+.signupLogo {
+	position: relative;
+	left: 135px;	
+}
+
+.signupInfoLabel {
+	position: relative;
+	left: 100px;
+	font-size: 40px;	
+}
+
+.signupUsername {
+	text-indent: 5px;
+	height:36px;
+	width: 500px;
+	font-size:20px;
+	display: inline-block;		
+}
+
+.signupEmail {
+	text-indent: 5px;
+	height:36px;
+	width: 500px;
+	font-size:20px;
+	display: inline-block;		
+}
+
+.signupPassword {
+	text-indent: 5px;
+	height:36px;
+	width: 500px;
+	font-size:20px;
+	display: inline-block;	
+}
+
+.signupConfirm {
+	text-indent: 5px;
+	height:36px;
+	width: 500px;
+	font-size:20px;
+	display: inline-block;		
+}
+
+.signupPhoneNumber {
+	text-indent: 5px;
+	height:36px;
+	width: 500px;
+	font-size:20px;
+	display: inline-block;		
+}
+
+.signupContact {
+	position: relative;
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	height: 42px;
+	width: 504px;
+	font-size: 16px;	
+}
+
+
+
+/* ------ */
+/* Account */
+/* ------ */
+
+.accountLogo {
+	position: relative;
+	left: 135px;		
+}
+
+.accountInfoLabel {
+	position: relative;
+	left: 100px;
+	font-size: 40px;	
+}
+
+.accountUsername {
+	text-indent: 5px;
+	height:36px;
+	width: 500px;
+	font-size:20px;
+	display: inline-block;		
+}
+
+.accountEmail {
+	text-indent: 5px;
+	height:36px;
+	width: 500px;
+	font-size:20px;
+	display: inline-block;		
+}
+
+.accountTelephone {
+	text-indent: 5px;
+	height:36px;
+	width: 500px;
+	font-size:20px;
+	display: inline-block;		
+}
+
+.accountEditUsername {
+	position: relative;
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	height: 42px;
+	width: 504px;
+	font-size: 16px;
+}
+
+.accountToggleDetails {
+	position: relative;
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	height: 42px;
+	width: 504px;
+	font-size: 16px;	
+}
+
+.accountChangePassword {
+	position: relative;
+	background-color: #000000;
+	border: none;
+	color: white;
+	text-align: center;
+	display: inline-block;
+	height: 42px;
+	width: 504px;
+	font-size: 16px;	
+}
